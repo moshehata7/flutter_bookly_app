@@ -39,9 +39,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
             return SlideTransition(
               position: slidingAnimation,
               child: Image.asset(
-                "assets/images/shelfy-logo-black_v2.png",
-                height: 100,
+                "images/shelfylogo.png",
+                height: 200,
               ),
+              
             );
           },
         ),
