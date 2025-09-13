@@ -5,6 +5,11 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column();
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Image.asset("assets/images/shelfy-logo-black_v2.png"),
+      ),
+    );
   }
 }
