@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(onPressed: (){},
-             icon: FaIcon(FontAwesomeIcons.magnifyingGlass) ),
+             icon: FaIcon(FontAwesomeIcons.magnifyingGlass,color: Colors.white,) ),
           )
         ],
       ),
