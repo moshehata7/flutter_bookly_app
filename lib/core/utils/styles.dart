@@ -4,7 +4,6 @@ abstract class Styles {
   static const titleLarge = TextStyle();
   static const textStyle14= TextStyle(
     fontSize: 14,
-    color: Colors.blueGrey
   );
   static const textStyle18 = TextStyle(
     fontSize: 18,

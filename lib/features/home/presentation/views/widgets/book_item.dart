@@ -13,9 +13,8 @@ class BookItem extends StatelessWidget {
           image: DecorationImage(fit: BoxFit.fill, image: AssetImage("images/book.jpg",)
           )
         ),
-        height: 300,
-        width: 150,
-        
+        height: 270,
+        width: 200,
       ),
     );
   }
