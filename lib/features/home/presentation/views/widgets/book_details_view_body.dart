@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_button.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_details_section.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,31 +19,7 @@ class BookDetailsViewBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              BookItem(),
-              SizedBox(height: 25),
-              Text("The Jungle Book", style: Styles.textStyle18),
-              SizedBox(height: 4),
-
-              Text("Rudyard Kipling", style: Styles.textStyle14),
-              SizedBox(height: 10),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.solidStar,
-                    size: 10,
-                    color: Colors.yellowAccent,
-                  ),
-                  SizedBox(width: 5),
-                  Text("4.8"),
-                  SizedBox(width: 5),
-
-                  Text("(2365)", style: Styles.textStyle14),
-                ],
-              ),
-              SizedBox(height: 30),
-              BookButton(),
+            BookDetailsSection(),
               Expanded(child: SizedBox(height: 20)),
               Padding(
                 padding: const EdgeInsets.only(left: 30),
