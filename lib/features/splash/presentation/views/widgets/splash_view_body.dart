@@ -1,6 +1,6 @@
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -20,8 +20,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     navigateToHome();
   }
 
-  
-
   @override
   void dispose() {
     super.dispose();
@@ -38,18 +36,20 @@ class _SplashViewBodyState extends State<SplashViewBody>
           builder: (context, _) {
             return SlideTransition(
               position: slidingAnimation,
-              child: Image.asset(
-                "images/shelfylogo.png",
-                height: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("images/shelfylogo.png", height: 200),
+                  Center(child: CircularProgressIndicator()),
+                ],
               ),
-              
             );
           },
         ),
       ),
     );
-    
   }
+
   void initSlidingAnimation() {
     animationController = AnimationController(
       vsync: this,
@@ -63,12 +63,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigateToHome() {
-      Future.delayed(Duration(seconds: 3), () {
-      Get.to(
-        () => HomeView(),
-        transition: Transition.fade,
-        duration: Duration(milliseconds: 300),
-      );
+    Future.delayed(Duration(seconds: 3), () {
+      // Get.to(
+      //   () => HomeView(),
+      //   transition: Transition.fade,
+      //   duration: Duration(milliseconds: 300),
+      // );
+      GoRouter.of(context).push('/homeView');
     });
   }
 }

@@ -16,37 +16,48 @@ class BestSellerItem extends StatelessWidget {
             width: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              image: 
-            DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage("images/book.jpg"))
-            )
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage("images/book.jpg"),
+              ),
             ),
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              
-              Text("The Jungle Book",style: Styles.textStyle18,),
-              Text("Rudyard Kipling",style: Styles.textStyle14,),
-              SizedBox(height: 20,),
-              Row(
-                children: [
-                  Text(r"19.99 €",style: Styles.textStyle20.copyWith(fontWeight: FontWeight.bold),),
-                  SizedBox(width: 50,),
-                  Row(
-                    children: [
-                      FaIcon(FontAwesomeIcons.solidStar,size: 10,color: Colors.yellowAccent,),
-                      Text(" 4.8",),
-                      Text("(2365)",style: Styles.textStyle14,)
-                    ],
-                  )
-                ],
-              )
-              
-            ],),
-          )
+                Text("The Jungle Book", style: Styles.textStyle18),
+                Text("Rudyard Kipling", style: Styles.textStyle14),
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Text(
+                      r"19.99 €",
+                      style: Styles.textStyle20.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 50),
+                    Row(
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.solidStar,
+                          size: 10,
+                          color: Colors.yellowAccent,
+                        ),
+                        SizedBox(width: 5),
+                        Text("4.8"),
+                        SizedBox(width: 5),
+
+                        Text("(2365)", style: Styles.textStyle14),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
