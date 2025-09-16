@@ -10,20 +10,14 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         hintText: "Search",
-        suffixIcon:  Padding(
+        suffixIcon: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: FaIcon(
-                  FontAwesomeIcons.magnifyingGlass,
-                  color: Colors.white,
-                ),
+          child: FaIcon(FontAwesomeIcons.magnifyingGlass, color: Colors.white),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: Colors.white
-          )
+          borderSide: BorderSide(color: Colors.white),
         ),
-      
       ),
     );
   }

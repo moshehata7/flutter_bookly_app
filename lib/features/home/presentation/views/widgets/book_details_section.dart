@@ -11,31 +11,31 @@ class BookDetailsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-          BookItem(),
-              SizedBox(height: 25),
-              Text("The Jungle Book", style: Styles.textStyle18),
-              SizedBox(height: 4),
+        BookItem(),
+        SizedBox(height: 25),
+        Text("The Jungle Book", style: Styles.textStyle18),
+        SizedBox(height: 4),
 
-              Text("Rudyard Kipling", style: Styles.textStyle14),
-              SizedBox(height: 10),
+        Text("Rudyard Kipling", style: Styles.textStyle14),
+        SizedBox(height: 10),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.solidStar,
-                    size: 10,
-                    color: Colors.yellowAccent,
-                  ),
-                  SizedBox(width: 5),
-                  Text("4.8"),
-                  SizedBox(width: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FaIcon(
+              FontAwesomeIcons.solidStar,
+              size: 10,
+              color: Colors.yellowAccent,
+            ),
+            SizedBox(width: 5),
+            Text("4.8"),
+            SizedBox(width: 5),
 
-                  Text("(2365)", style: Styles.textStyle14),
-                ],
-              ),
-              SizedBox(height: 30),
-              BookButton(),
+            Text("(2365)", style: Styles.textStyle14),
+          ],
+        ),
+        SizedBox(height: 30),
+        BookButton(),
       ],
     );
   }

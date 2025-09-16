@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class BookItem extends StatelessWidget {
   const BookItem({super.key});
@@ -10,8 +10,10 @@ class BookItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          image: DecorationImage(fit: BoxFit.fill, image: AssetImage("images/book.jpg",)
-          )
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage("images/book.jpg"),
+          ),
         ),
         height: 270,
         width: 200,

@@ -11,15 +11,15 @@ class HomeViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView(
-        children:[ 
+        children: [
           FeaturedListView(),
-          SizedBox(height: 25,),
+          SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Best Seller",style: Styles.textStyle18,),
+            child: Text("Best Seller", style: Styles.textStyle18),
           ),
-          BestSellerListView()
-        ]
+          BestSellerListView(),
+        ],
       ),
     );
   }

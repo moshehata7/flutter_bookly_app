@@ -26,12 +26,15 @@ class BookButton extends StatelessWidget {
               padding: const EdgeInsets.only(left: 24),
               child: Text(
                 r"19.99 €",
-                style: Styles.textStyle20.copyWith(fontWeight: FontWeight.bold,color: Colors.black),
+                style: Styles.textStyle20.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 30),
-              child: Text("Free Preview",style: Styles.textStyle18,),
+              child: Text("Free Preview", style: Styles.textStyle18),
             ),
           ],
         ),

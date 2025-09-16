@@ -11,15 +11,14 @@ class SearchViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: ListView(
         children: [
           CustomTextField(),
-          SizedBox(height: 15,),
-          Text("search result",style: Styles.textStyle16,),
-          SizedBox(height: 15,),
-          BestSellerListView()
-
+          SizedBox(height: 15),
+          Text("search result", style: Styles.textStyle16),
+          SizedBox(height: 15),
+          BestSellerListView(),
         ],
       ),
     );

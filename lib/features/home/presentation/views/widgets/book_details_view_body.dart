@@ -16,7 +16,7 @@ class BookDetailsViewBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            BookDetailsSection(),
+              BookDetailsSection(),
               Expanded(child: SizedBox(height: 20)),
               Padding(
                 padding: const EdgeInsets.only(left: 30),
