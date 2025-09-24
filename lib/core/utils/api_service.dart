@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 
-class Api {
+class ApiService {
   final Dio dio;
+  final baseUrl= "https://www.googleapis.com/books/v1/";
 
-  Api(this.dio);
-  Future<dynamic> get({required String url}) async {
-    Response response = await dio.get(url);
+  ApiService(this.dio);
+  Future<dynamic> get({required String endPoint}) async {
+    Response response = await dio.get(endPoint);
     if (response.statusCode == 200) {
       return response.data;
     } else {
