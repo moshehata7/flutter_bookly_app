@@ -11,7 +11,7 @@ class BookDetailsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BookItem(),
+        BookItem(image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.simonandschuster.com%2Fbooks%2FThe-Library-Book%2FSusan-Orlean%2F9781476740195&psig=AOvVaw1b9kSj__hadW-ZPZh-E9aL&ust=1759192953288000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPjsrsve_I8DFQAAAAAdAAAAABAE",),
         SizedBox(height: 25),
         Text("The Jungle Book", style: Styles.textStyle18),
         SizedBox(height: 4),
