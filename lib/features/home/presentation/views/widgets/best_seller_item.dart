@@ -1,62 +1,72 @@
-import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book/book.model.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
-class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+import '../../../../../core/utils/styles.dart';
+import 'book_rating.dart';
+
+class BookListViewItem extends StatelessWidget {
+  const BookListViewItem({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
+    final volumeInfo = bookModel.volumeInfo;
+
+    String? imageUrl = volumeInfo?.imageLinks?.thumbnail;
+    if (imageUrl != null && imageUrl.startsWith('http:')) {
+      imageUrl = imageUrl.replaceFirst('http:', 'https:');
+    }
+
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push('/bookDetailsView');
+        GoRouter.of(context).push('/bookDetailsView', extra: bookModel);
       },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        height: 130,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 130,
-              width: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage("images/book.jpg"),
-                ),
-              ),
+            CustomImage(
+              img: (imageUrl != null)
+                  ? imageUrl.replaceFirst('http://', 'https://')
+                  : '',
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16),
+            const SizedBox(width: 20),
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("The Jungle Book", style: Styles.textStyle18),
-                  Text("Rudyard Kipling", style: Styles.textStyle14),
-                  SizedBox(height: 20),
+                  // العنوان
+                  Text(
+                    volumeInfo?.title ?? "No Title",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Styles.textStyle20,
+                  ),
+
+                  // المؤلف
+                  Text(
+                    (volumeInfo?.authors != null &&
+                            volumeInfo!.authors!.isNotEmpty)
+                        ? volumeInfo.authors![0]
+                        : "Unknown Author",
+                    style: Styles.textStyle14,
+                  ),
+
+                  // السعر والتقييم
                   Row(
                     children: [
                       Text(
-                        r"19.99 €",
-                        style: Styles.textStyle20.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        'Free',
+                        style: Styles.textStyle14.copyWith(color: Colors.grey[700])
                       ),
-                      SizedBox(width: 50),
-                      Row(
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.solidStar,
-                            size: 10,
-                            color: Colors.yellowAccent,
-                          ),
-                          SizedBox(width: 5),
-                          Text("4.8"),
-                          SizedBox(width: 5),
-
-                          Text("(2365)", style: Styles.textStyle14),
-                        ],
+                      const Spacer(),
+                      BookRating(
+                        rating: (volumeInfo?.averageRating ?? 0).round(),
+                        count: volumeInfo?.ratingsCount ?? 0,
                       ),
                     ],
                   ),

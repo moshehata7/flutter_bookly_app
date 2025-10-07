@@ -1,38 +1,49 @@
 import 'package:bookly_app/constants.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book/book.model.dart';
+import 'package:bookly_app/features/home/presentation/view_model/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_details_view_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
+class BookDetailsView extends StatefulWidget {
+  const BookDetailsView({super.key, required this.book});
+  final BookModel book;
+
+  @override
+  State<BookDetailsView> createState() => _BookDetailsViewState();
+}
+
+class _BookDetailsViewState extends State<BookDetailsView> {
+  @override
+  void initState() {
+    super.initState();
+    final category = widget.book.volumeInfo?.categories?.isNotEmpty == true
+        ? widget.book.volumeInfo?.categories!.first
+        : "general";
+    BlocProvider.of<SimilarBooksCubit>(
+      context,
+    ).fetchSimilarBooks(category: category??"");
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 30),
-          child: IconButton(
-            onPressed: () {
-              GoRouter.of(context).pop();
-            },
-            icon: Icon(Icons.close),
-          ),
+        leading: IconButton(
+          onPressed: () => GoRouter.of(context).pop(),
+          icon: const Icon(Icons.close),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 30),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.shopping_cart_outlined),
-            ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.shopping_cart_outlined),
           ),
+          const SizedBox(width: 16),
         ],
       ),
-      body: BookDetailsViewBody(),
+      body: BookDetailsViewBody(book: widget.book),
     );
   }
 }

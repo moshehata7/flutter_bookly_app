@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/data/models/book_model/book/book.model.dart';
 import 'package:bookly_app/features/home/presentation/view_model/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +14,12 @@ class FeaturedListView extends StatelessWidget {
         if (state is FeaturedBooksSuccess) {
           return SizedBox(
             height: 300,
-            width: 150,
             child: ListView.builder(
-              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return BookItem(
-                  image: state.books[index].volumeInfo.imageLinks.thumbnail,
-                );
+                final BookModel book = state.books[index];
+                return BookItem(book: book);
               },
             ),
           );
@@ -29,7 +28,7 @@ class FeaturedListView extends StatelessWidget {
         } else if (state is FeaturedBooksFailure) {
           return Center(child: Text(state.errorMessage));
         } else {
-          return Text("error...");
+          return const Center(child: Text("Unexpected error..."));
         }
       },
     );

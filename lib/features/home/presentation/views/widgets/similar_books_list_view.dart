@@ -1,19 +1,36 @@
+import 'package:bookly_app/features/home/data/models/book_model/book/book.model.dart';
+import 'package:bookly_app/features/home/presentation/view_model/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .1,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return BookItem(image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.simonandschuster.com%2Fbooks%2FThe-Library-Book%2FSusan-Orlean%2F9781476740195&psig=AOvVaw1b9kSj__hadW-ZPZh-E9aL&ust=1759192953288000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPjsrsve_I8DFQAAAAAdAAAAABAE",);
-        },
-      ),
+    return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
+      builder: (context, state) {
+        if (state is SimilarBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .18,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: state.books.length,
+              itemBuilder: (context, index) {
+                final BookModel book = state.books[index];
+                return BookItem(book: book);
+              },
+            ),
+          );
+        } else if (state is SimilarBooksLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is SimilarBooksFailure) {
+          return Center(child: Text(state.errorMessage));
+        } else {
+          return const Center(child: Text("Unexpected error..."));
+        }
+      },
     );
   }
 }

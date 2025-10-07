@@ -18,7 +18,7 @@ final class NewestBooksFailure extends NewestBooksState {
 }
 
 final class NewestBooksSuccess extends NewestBooksState {
-  final List<Book> books;
+  final List<BookModel> books;
 
   NewestBooksSuccess(this.books);
 }

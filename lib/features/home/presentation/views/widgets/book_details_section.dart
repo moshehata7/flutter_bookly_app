@@ -1,41 +1,68 @@
+import 'package:bookly_app/core/utils/functions/launch.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book/book.model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_button.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({super.key, required this.book});
+
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
+    final volumeInfo = book.volumeInfo;
+
     return Column(
       children: [
-        BookItem(image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.simonandschuster.com%2Fbooks%2FThe-Library-Book%2FSusan-Orlean%2F9781476740195&psig=AOvVaw1b9kSj__hadW-ZPZh-E9aL&ust=1759192953288000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPjsrsve_I8DFQAAAAAdAAAAABAE",),
-        SizedBox(height: 25),
-        Text("The Jungle Book", style: Styles.textStyle18),
-        SizedBox(height: 4),
+        CustomImage(img: volumeInfo?.imageLinks?.thumbnail ?? ""),
+        const SizedBox(height: 25),
 
-        Text("Rudyard Kipling", style: Styles.textStyle14),
-        SizedBox(height: 10),
+        Text(
+          volumeInfo?.title ?? "No Title",
+          style: Styles.textStyle18,
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 4),
+
+        Text(
+          (volumeInfo?.authors?.isNotEmpty ?? false)
+              ? volumeInfo!.authors!.join(", ")
+              : "Unknown Author",
+          style: Styles.textStyle14,
+        ),
+        const SizedBox(height: 10),
 
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FaIcon(
+            const FaIcon(
               FontAwesomeIcons.solidStar,
               size: 10,
               color: Colors.yellowAccent,
             ),
-            SizedBox(width: 5),
-            Text("4.8"),
-            SizedBox(width: 5),
-
-            Text("(2365)", style: Styles.textStyle14),
+            const SizedBox(width: 5),
+            Text(
+              (volumeInfo?.averageRating?.toString() ?? "N/A"),
+              style: Styles.textStyle14,
+            ),
+            const SizedBox(width: 5),
+            Text(
+              "(${volumeInfo?.ratingsCount ?? 0})",
+              style: Styles.textStyle14,
+            ),
           ],
         ),
-        SizedBox(height: 30),
-        BookButton(),
+        const SizedBox(height: 30),
+
+        BookButton(
+          onPressed: () {
+            launchCustomUrl(context, volumeInfo?.previewLink ?? "");
+          },
+        ),
       ],
     );
   }

@@ -2,7 +2,8 @@ import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class BookButton extends StatelessWidget {
-  const BookButton({super.key});
+  const BookButton({super.key, required this.onPressed});
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,11 @@ class BookButton extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 30),
-              child: Text("Free Preview", style: Styles.textStyle18),
+              child: TextButton(
+                onPressed: onPressed,
+
+                child: Text("Free Preview", style: Styles.textStyle18.copyWith(color: Colors.black)),
+              ),
             ),
           ],
         ),
