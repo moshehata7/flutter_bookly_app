@@ -16,7 +16,7 @@ class ApiService {
     }
   }
   // Future<dynamic> post({
-  //   required String url,
+  //   required String endPoint,
   //   @required dynamic body,
   //   @required String? token,
   // }) async {
@@ -25,7 +25,7 @@ class ApiService {
   //     headers.addAll({"authorization": "Bearer  $token"});
   //   }
   //   Response response = await dio.post(
-  //     url,
+  //     $baseUrl$endpoint,
   //     data: body,
   //     options: Options(headers: headers),
   //   );
@@ -39,7 +39,7 @@ class ApiService {
   // }
 
   // Future<dynamic> put({
-  //   required String url,
+  //   required String endPoint,
   //   @required dynamic body,
   //   @required String? token,
   // }) async {
@@ -48,7 +48,7 @@ class ApiService {
   //     headers.addAll({"authorization": "Bearer  $token"});
   //   }
   //   Response response = await dio.put(
-  //     url,
+  //     $baseUrl$endPoint,
   //     data: body,
   //     options: Options(headers: headers),
   //   );

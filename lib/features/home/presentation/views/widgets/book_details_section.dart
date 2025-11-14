@@ -19,7 +19,7 @@ class BookDetailsSection extends StatelessWidget {
     return Column(
       children: [
         CustomImage(img: volumeInfo?.imageLinks?.thumbnail ?? ""),
-        const SizedBox(height: 25),
+        const SizedBox(height: 15),
 
         Text(
           volumeInfo?.title ?? "No Title",

@@ -4,6 +4,7 @@ import 'package:bookly_app/features/search/presentation/views/widgets/search_tex
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
@@ -14,7 +15,15 @@ class SearchViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: ListView(
         children: [
-          CustomTextField(),
+          Row(
+            children: [
+              IconButton(onPressed: (){
+                GoRouter.of(context).pop();
+              }, icon: Icon(Icons.arrow_back)),
+              SizedBox(width: 10,),
+              Expanded(child: CustomTextField()),
+            ],
+          ),
           SizedBox(height: 15),
           Text("search result", style: Styles.textStyle16),
           SizedBox(height: 15),

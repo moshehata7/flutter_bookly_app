@@ -35,13 +35,6 @@ class _BookDetailsViewState extends State<BookDetailsView> {
           onPressed: () => GoRouter.of(context).pop(),
           icon: const Icon(Icons.close),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart_outlined),
-          ),
-          const SizedBox(width: 16),
-        ],
       ),
       body: BookDetailsViewBody(book: widget.book),
     );
